@@ -10,22 +10,20 @@ spec:
     - name: source_git_url
       type: string
       default: https://github.com/NisreenHajHusein/CP4I_Auto_POC.git
-
   resources:
   - name: git-repo
     type: git
   - name: image
-    type: image
-    
+    type: image    
   tasks:
   - name: clone-source-repo
     taskRef:
       name: git-clone
       kind: ClusterTask
-      workspaces:
+    workspaces:
         - name: output
           workspace: git-source
-      params:
+    params:
         - name: url
           value: "$(params.source_git_url)"
         - name: revision
