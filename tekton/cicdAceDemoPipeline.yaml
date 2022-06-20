@@ -1,0 +1,36 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: ace-cicd-demo-pipeline 
+spec:
+  resources:
+  - name: git-repo
+    type: git
+  - name: image
+    type: image
+  tasks:
+  - name: build-image
+    taskRef:
+      name: build-ace-img-task
+    resources:
+      inputs:
+      - name: source
+        resource: git-repo
+      outputs:
+      - name: image
+        resource: image
+    params:
+    - name: TLSVERIFY
+      value: "false"
+  - name: deploy-image
+    taskRef:
+      name: deploy-ace-img-task
+    runAfter:
+      - build-image
+    resources:
+      inputs:
+      - name: source
+        resource: git-repo
+      outputs:
+      - name: image
+        resource: image
