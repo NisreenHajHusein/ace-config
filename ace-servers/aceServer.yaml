@@ -2,7 +2,7 @@ apiVersion: appconnect.ibm.com/v1beta1
 kind: IntegrationServer
 metadata:
   name: argocd-ace-server
-  namespace: cp4i
+  namespace: auto-poc
 spec:
   enableMetrics: true
   license:
