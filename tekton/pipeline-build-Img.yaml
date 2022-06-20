@@ -1,0 +1,53 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-ace-img-pipeline
+spec:
+  params:
+    - name: source_git_revision
+      type: string
+      default: main
+    - name: source_git_url
+      type: string
+      default: https://github.com/NisreenHajHusein/CP4I_Auto_POC.git
+
+  resources:
+  - name: git-repo
+    type: git
+  - name: image
+    type: image
+    
+  tasks:
+  - name: clone-source-repo
+      taskRef:
+        name: git-clone
+        kind: ClusterTask
+      workspaces:
+        - name: output
+          workspace: git-source
+      params:
+        - name: url
+          value: "$(params.source_git_url)"
+        - name: revision
+          value: "$(params.source_git_revision)"
+        - name: deleteExisting
+          value: "true"
+          
+  - name: build-ace-image
+    taskRef:
+      name: build-ace-img-task
+    runAfter:
+        - clone-source-repo
+      workspaces:
+        - name: source
+          workspace: git-source
+    resources:
+      inputs:
+      - name: source
+        resource: git-repo
+      outputs:
+      - name: image
+        resource: image
+    params:
+    - name: TLSVERIFY
+      value: "false"  

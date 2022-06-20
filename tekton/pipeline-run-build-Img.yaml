@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: build-ace-img-pipeline-run
+  namespace: cicd
+spec:
+  pipelineRef:
+    name: build-ace-img-pipeline 
+  resources:
+    - name: git-repo
+      resourceRef:
+        name: acecicd-res-git
+    - name: image
+      resourceRef:
+        name: acecicd-res-image
