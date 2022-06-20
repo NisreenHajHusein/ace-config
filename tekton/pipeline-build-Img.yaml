@@ -38,9 +38,9 @@ spec:
       name: build-ace-img-task
     runAfter:
         - clone-source-repo
-      workspaces:
-        - name: source
-          workspace: git-source
+    workspaces:
+       - name: source
+         workspace: git-source
     resources:
       inputs:
       - name: source
