@@ -16,26 +16,9 @@ spec:
   - name: image
     type: image    
   tasks:
-  - name: clone-source-repo
-    taskRef:
-      name: git-clone
-      kind: ClusterTask
-    workspaces:
-        - name: output
-          workspace: git-source
-    params:
-        - name: url
-          value: "$(params.source_git_url)"
-        - name: revision
-          value: "$(params.source_git_revision)"
-        - name: deleteExisting
-          value: "true"
-          
   - name: build-ace-image
     taskRef:
       name: build-ace-img-task
-    runAfter:
-        - clone-source-repo
     workspaces:
        - name: source
          workspace: git-source
