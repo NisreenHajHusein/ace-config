@@ -4,4 +4,4 @@ resources:
 - aceServer.yaml
 images:
 - name: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img
-  newTag: "8"
+  newTag: "9.0"
