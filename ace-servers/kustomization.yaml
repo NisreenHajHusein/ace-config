@@ -4,8 +4,6 @@ namespace: auto-poc
 resources:
 - ace-server.yaml
 - ace-server-dep.yaml
-commonLabels:
-  app: my-ace-sample
 images:
 - name: custom-ace-img
   newTag: "9.0"
