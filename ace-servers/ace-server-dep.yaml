@@ -8,14 +8,14 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        run: all-in-one-server
-        tbn_cluster: all-in-one-server
-        app: all-in-one-server
+        run: ce-demo-10
+        tbn_cluster: ce-demo-10
+        app: ce-demo-10
     spec:
       containers:
       - image: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img:6.0
         imagePullPolicy: always
-        name:ace-demo-10
+        name: ace-demo-10
         ports:
         - containerPort: 7800
           name: http
