@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - aceServer.yaml
 commonLabels:
-  app: my-wordpress
+  app: my-ace-sample
 images:
-- name: custom-ace-imgggg
+- name: custom-ace-img
   newTag: "9.0"
