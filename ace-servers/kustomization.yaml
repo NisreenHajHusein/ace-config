@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
 - aceServer.yaml
 images:
-- name: custom-ace-img
+- name: custom-ace-imgggg
   newTag: "9.0"
