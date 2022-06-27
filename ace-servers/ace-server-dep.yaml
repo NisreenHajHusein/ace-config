@@ -1,22 +1,40 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ace-demo-10
+  name: ace-server-deplyment
 spec:
+  progressDeadlineSeconds: 600
   replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: ace-server-deplyment
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       creationTimestamp: null
       labels:
-        run: ce-demo-10
-        tbn_cluster: ce-demo-10
-        app: ce-demo-10
+        app: ace-server-deplyment
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img:6.0
-        imagePullPolicy: always
-        name: ace-demo-10
-        ports:
-        - containerPort: 7800
-          name: http
-          protocol: TCP
+      - env:
+        image: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img:6.0
+        imagePullPolicy: Always
+        name: ace-server-deplyment
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: certs
+        secret:
+          defaultMode: 420
+          secretName: ibm-jks
