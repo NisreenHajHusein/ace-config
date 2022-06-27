@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ace-server-argocd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ace-server-argocd
+  template:
+    metadata:
+      labels:
+        app: ace-server-argocd
+    spec:
+      containers:
+      - name: ace-server-argocd
+        image: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img:6.0
+        ports:
+        - containerPort: 8080
