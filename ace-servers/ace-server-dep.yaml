@@ -13,7 +13,7 @@ spec:
         app: ace-server-argocd
     spec:
       containers:
-	  - env:
+      - env:
         - name: LICENSE_LICENSE
           value: L-KSBM-C87FU2
         - name: LICENSE_USE
