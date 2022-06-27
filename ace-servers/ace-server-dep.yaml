@@ -26,8 +26,6 @@ spec:
 	  value: L-KSBM-C87FU2
 	- name: LICENSE_USE
 	  value: CloudPakForIntegrationNonProduction
-	- name: OPERATOR_VERSION
-	  value: 3.0.0
 	- name: OPERAND_VERSION
 	  value: 12.0.2.0-r2
         image: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img:6.0
