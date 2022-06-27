@@ -5,5 +5,5 @@ resources:
 - ace-server-dep.yaml
 images:
 - name: custom-ace-img
-  newTag: "9.0"
+  newTag: "6.0"
 
