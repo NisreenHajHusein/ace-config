@@ -4,6 +4,6 @@ namespace: auto-poc
 resources:
 - ace-server.yaml
 images:
-- name: custom-ace-img
-  newTag: "6.0"
+- name: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img
+  newTag: "9.0"
 
