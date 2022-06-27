@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ace-server-argocd-6
+  name: ace-server-argocd-10
 spec:
   replicas: 2
   selector:
