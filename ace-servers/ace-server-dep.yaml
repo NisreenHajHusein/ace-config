@@ -6,11 +6,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ace-server-argocd
+      app: ace-server-argocd-10
   template:
     metadata:
       labels:
-        app: ace-server-argocd
+        app: ace-server-argocd-10
     spec:
       containers:
       - env:
