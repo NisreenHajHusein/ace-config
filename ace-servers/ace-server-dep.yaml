@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: ace-server-argocd-10
 spec:
-  revisionHistoryLimit: 0
   replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: ace-server-argocd-10
