@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: ace-server-argocd-10
 spec:
+  revisionHistoryLimit: 0
   replicas: 2
   selector:
     matchLabels:
@@ -11,8 +12,7 @@ spec:
     metadata:
       labels:
         app: ace-server-argocd-10
-    spec:
-      revisionHistoryLimit: 0
+    spec:      
       containers:
       - name: ace-server-argocd
         image: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img:6.0
