@@ -1,32 +1,11 @@
-apiVersion: appconnect.ibm.com/v1beta1
-kind: IntegrationServer
+apiVersion: v1
+kind: Pod
 metadata:
-  name: argocd-ace-server
-  namespace: auto-poc
+  name: test-pod
 spec:
-  enableMetrics: true
-  license:
-    accept: true
-    license: L-KSBM-C87FU2
-    use: CloudPakForIntegrationNonProduction
-  pod:
-    containers:
-      runtime:
-        image: image-registry.openshift-image-registry.svc:5000/auto-poc/custom-ace-img:5.0
-        imagePullPolicy: Always
-        resources:
-          limits:
-            cpu: 300m
-            memory: 350Mi
-          requests:
-            cpu: 300m
-            memory: 300Mi
-  adminServerSecure: false
-  router:
-    timeout: 120s
-  designerFlowsOperationMode: disabled
-  createDashboardUsers: true
-  service:
-    endpointType: http
-  replicas: 1
-  version: 12.0.2.0-r2
+  containers:
+  - name: test-container
+    image: k8s.gcr.io/busybox
+    env:
+    - name: DB_URL
+      value: postgres://db_url:5432
